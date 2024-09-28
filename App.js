@@ -1,10 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, Pressable } from "react-native";
+import SpotifyAuth from "./SpotifyAuth";
+import { getAccessToken } from "./SpotifyAuth";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <SpotifyAuth />
+      <Pressable
+        onPress={() => {
+          console.log(getAccessToken());
+        }}
+      >
+        <Text>Get Access Token</Text>
+      </Pressable>
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +22,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#25292e",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
