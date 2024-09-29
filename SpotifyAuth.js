@@ -76,20 +76,19 @@ const getToken = async (code) => {
   try {
     const response = await fetch(discovery.tokenEndpoint, payload); // Hacer la petición POST
     const data = await response.json(); // Convertir la respuesta en JSON
-    console.log(data);
-    console.log(refresh_token);
 
     // Almacenar el token de acceso en AsyncStorage
     await AsyncStorage.setItem("access_token", data.access_token);
     await AsyncStorage.setItem("access_token", data.refresh_token);
 
     console.log("Access token saved successfully:", data.access_token);
+    console.log("Refreshtoken saved successfully:", data.refresh_token;
   } catch (error) {
     console.error("Error fetching token:", error);
   }
 };
 
-const getRefreshToken = async () => {
+export const getRefreshToken = async () => {
   const refreshToken = AsyncStorage.getItem("refresh_token");
 
   const payload = {
